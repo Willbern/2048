@@ -1,0 +1,161 @@
+ oc  project
+   70  oc get pods
+   71  oc get svc
+   72  oc get evnt
+   73  oc get event
+   74  oc  get dc
+   75  oc edit docker-registry
+   76  oc edit dc docker-registry
+   77  oc  get deploy
+   78  oc  get pods
+   79  oc  logs dc/docker-registry
+   80  oc  status dc/docker-registry
+   81  oc deploy 
+   82  oc deploy docker-registry
+   83* 
+   84  oc deploy docker-registry --cancel
+   85  oc rollout cancel docker-registry
+   86  oc rollout cancel dc docker-registry
+   87  oc  cancel dc docker-registry
+   88  oc =h
+   89  oc -h
+   90  oc get dc
+   91  oc edit dc registry-console
+   92  oc get deploy
+   93  oc  get pods
+   94  oc delete pod registry-console-1-deploy
+   95  oc  delete pod registry-console-2-h7vbb
+   96  oc edit dc route-1
+   97  oc get dc
+   98  oc  edit dc router
+   99  oc edit docker-registry
+  100  oc edit dc docker-registry
+  101  oc get dc
+  102  oc  get log
+  103  oc get event
+  104  oc get pods
+  105  oc get event|grep 
+  106  oc get event|grep 97k9n
+  107  docker images |grep console
+  108  docker images 
+  109  history 
+  110  oadm policy add-cluster-role-to-user cluseter-admin admin
+  111  oadm policy add-cluster-role-to-user cluster-admin admin
+  112  ifconfig 
+  113  oc label node node1.example.com infra="yes"
+  114  ;;
+  115  ll
+  116  du -sh *
+  117  docker load -i registry-console.tar 
+  118  docker images
+  119  REDHAT_REG="registry.access.redhat.com";
+  120  PRIVATE_REG="registry.example.com:5000";
+  121  for i in $(docker images |grep $REDHAT_REG |awk '{print $1":"$2}') ; do docker tag $i "$PRIVATE_REG$(echo $i |awk -F 'com' {'print $2'})" ; done;
+  122  for i in `docker images |grep $REDHAT_REG |awk '{print $1}'` ; do docker rmi $i; done;
+  123  docker images
+  124  docker push registry.example.com:5000/openshift3/registry-console
+  125  docker images |grep console
+  126  docker tag registry.example.com:5000/openshift3/registry-console:latest registry.example.com:5000/openshift3/registry-console:3.5
+  127  docker images |grep console
+  128  docker push registry.example.com:5000/openshift3/registry-console:3.5
+  129  oc get pods
+  130  oc delete pod registry-console-2-deploy
+  131  oc  get pods
+  132  oc  get svc
+  133  oc get dc
+  134  oc  delete docker-registry registry-console router
+  135  oc  get template
+  136  oc delete dc docker-registry registry-console router
+  137  oc delete svc docker-registry registry-console router
+  138  oc  get route
+  139  oc delete route docker-registry registry-console
+  140  oc  get pods
+  141  oc delete pod docker-registry-2-deploy 
+  142  oc delete pod router-2-deploy
+  143  oadm registry --config=/etc/origin/master/admin.kubeconfig     --service-account=registry     --images='registry.example.com:5000/openshift3/ose-${component}:${version}' 
+  144  oc get dc
+  145  oc create route passthrough --service registry-console     --port registry-console     -n default
+  146  oc new-app -n default --template=registry-console     -p OPENSHIFT_OAUTH_PROVIDER_URL="https://master.example.com:8443"     -p REGISTRY_HOST=$(oc get route docker-registry -n default --template='{{ .spec.host }}')     -p COCKPIT_KUBE_URL=$(oc get route registry-console -n default --template='https://{{ .spec.host }}')
+  147  oc get pods
+  148  oc new-app -n default --template=registry-console     -p OPENSHIFT_OAUTH_PROVIDER_URL="https://master.example.com:8443"     -p REGISTRY_HOST=$(oc get route docker-registry -n default --template='{{ .spec.host }}')     -p COCKPIT_KUBE_URL=$(oc get route registry-console -n default --template='https://{{ .spec.host }}')
+  149  oc logs dc/docker-registry
+  150  docker load -i busybox.tar 
+  151  docker images |grep busy
+  152  docker tag docker.io/busybox:latest 172.30.32.88
+  153  docker tag docker.io/busybox:latest 172.30.32.88:5000/busybox
+  154  docker images |grep busy
+  155  docker images |grep 88
+  156  docker rmi 172.30.32.88
+  157  docker push 172.30.32.88:5000/busybox
+  158  docker push 172.30.32.88:5000/busybox:latest
+  159  docker push 172.30.32.88:5000/openshift/busybox:latest
+  160  docker rmi 172.30.32.88:5000/busybox
+  161  docker tag docker.io/busybox:latest 172.30.32.88:5000/openshift/busybox
+  162  docker push 172.30.32.88:5000/openshift/busybox
+  163  oadm policy add-cluster-role-to-user     cluster-reader     system:serviceaccount:default:router
+  164* oadm router router --replicas=1 --selector='regioni=nfra'   --service-account=router
+  165  oadm registry --config=/etc/origin/master/admin.kubeconfig     --service-account=registry     --images='registry.example.com:5000/openshift3/ose-${component}:${version}' 
+  166  oc delete svc docker-registry
+  167  oc delete dc docker-registry
+  168  oadm registry --config=/etc/origin/master/admin.kubeconfig     --service-account=registry     --images='registry.example.com:5000/openshift3/ose-${component}:${version}' 
+  169  oc get svc
+  170  oc get dc
+  171  oc delete registry-console
+  172  oc delete dc registry-console
+  173  oc delete svc registry-console
+  174  oc new-app -n default --template=registry-console     -p OPENSHIFT_OAUTH_PROVIDER_URL="https://<openshift_oauth_url>:8443"     -p REGISTRY_HOST=$(oc get route docker-registry -n default --template='{{ .spec.host }}')     -p COCKPIT_KUBE_URL=$(oc get route registry-console -n default --template='https://{{ .spec.host }}')
+  175  oc new-app -n default --template=registry-console     -p OPENSHIFT_OAUTH_PROVIDER_URL="https://master.example.com:8443"     -p REGISTRY_HOST=$(oc get route docker-registry -n default --template='{{ .spec.host }}')     -p COCKPIT_KUBE_URL=$(oc get route registry-console -n default --template='https://{{ .spec.host }}')
+  176  cd /usr/share/ansible/openshift-ansible/playbooks/
+  177  ls
+  178  cd byo/
+  179  ls
+  180  cd roles/
+  181  ls
+  182  cd /usr/share/openshift/
+  183  ls
+  184  cd examples/
+  185  ls
+  186  cd /usr/share/ansible/openshift-ansible/
+  187  ls
+  188  ls -R|grep route
+  189  find . -name router
+  190  cd roles/openshift_hosted
+  191  ls
+  192  cd tasks/
+  193  ls
+  194  cd router/
+  195  ls
+  196  vim router.yml 
+  197  cd ..
+  198  ls
+  199  vim main.yml 
+  200  ls
+  201  cd ..
+  202  ls
+  203  vim defaults/main.yml 
+  204  ls
+  205  cat vars/main.yml 
+  206  cd
+  207  oc get pods
+  208  oc delete pod registry-console-1-deploy
+  209  oc get rc
+  210  oc delete rc registry-console-1-deploy router-1 router-2             router-3
+  211  oc delte rc registry-console-1
+  212  oc delete rc registry-console-1
+  213  oc get dc
+  214  oc delete dc router
+  215  oc delete svc router
+  216  oc  get pods
+  217  oc  delete pod router-3-deploy
+  218  oc get dc
+  219  oadm policy add-cluster-role-to-user     cluster-reader     system:serviceaccount:default:router
+  220  oadm router --dry-run --service-account=router 
+  221  oadm router -o yaml --service-account=router
+  222  oc  get template
+  223  oc 
+  224  oadm registry --config=/etc/origin/master/admin.kubeconfig     --service-account=registry     --images='registry.example.com:5000/openshift3/ose-${component}:${version}'
+  225  oadm router ose-router --replicas=1 --credentials='/etc/origin/master/openshift-router.kubeconfig'  --images='registry.example.com:5000/openshift3/ose-${component}:${version}'  --selector='infra=yes' --service-account=router
+  226  oadm router router --replicas=1 --credentials='/etc/origin/master/openshift-router.kubeconfig'  --images='registry.example.com:5000/openshift3/ose-${component}:${version}'  --selector='infra=yes' --service-account=router
+  227  oadm router router --replicas=1  --images='registry.example.com:5000/openshift3/ose-${component}:${version}'  --selector='infra=yes' --service-account=router
+  228  history 
+[root@master ~]# 
